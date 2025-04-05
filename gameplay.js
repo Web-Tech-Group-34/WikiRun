@@ -152,9 +152,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // Add the page title
                 const titleElement = document.createElement('h1');
-                titleElement.textContent = data.parse.displaytitle || pageName.replace(/_/g, " ");
-                tempDiv.appendChild(titleElement);
-                
+                titleElement.textContent = (data.parse.displaytitle || pageName.replace(/_/g, " ")).replace(/<span class="mw-page-title-main">(.*?)<\/span>/g, '$1');
+                tempDiv.appendChild(titleElement);                
                 // Add the content
                 const contentDiv = document.createElement('div');
                 contentDiv.innerHTML = data.parse.text;

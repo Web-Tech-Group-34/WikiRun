@@ -1,5 +1,8 @@
-body {
+body, html {
     margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
 }
 
@@ -27,7 +30,7 @@ body {
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
-    transition: background-color 0.2s; /* Smooth transition for hover effect */
+    transition: background-color 0.2s;
 }
 
 .k-nav-links li a:hover {
@@ -72,4 +75,317 @@ body {
 
 .start-button:hover {
     background-color: #3367d6;
+}
+
+.gameplay-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 50px);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #3366cc, #254cc7);
+    color: white;
+    z-index: 10;
+}
+
+.level-info h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.level-info p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.game-stats {
+    display: flex;
+    gap: 25px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-value {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.game-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.wiki-sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-right: 1px solid #eaecf0;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.wiki-sidebar h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: #54595d;
+    border-bottom: 1px solid #eaecf0;
+    padding-bottom: 8px;
+}
+
+.wiki-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wiki-sidebar li {
+    margin-bottom: 8px;
+}
+
+.wiki-sidebar a {
+    color: #3366cc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    padding: 8px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.wiki-sidebar a:hover {
+    background-color: #eaecf0;
+}
+
+.wiki-sidebar a.current {
+    font-weight: bold;
+    background-color: #eaecf0;
+}
+
+.wiki-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px 30px;
+    background-color: white;
+}
+
+.wiki-content h1 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    color: #000;
+    border-bottom: 1px solid #eaecf0;
+    padding-bottom: 10px;
+}
+
+.wiki-content p {
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.wiki-content img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #eaecf0;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.wiki-content a {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.wiki-content a:hover {
+    text-decoration: underline;
+}
+
+.game-controls {
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaecf0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-progress {
+    height: 6px;
+    background-color: #eaecf0;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #3366cc, #72a7ff);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+#giveUpBtn {
+    background-color: #f8f9fa;
+    color: #d33;
+    border: 1px solid #d33;
+}
+
+#giveUpBtn:hover {
+    background-color: #fee7e6;
+}
+
+.hint-btn {
+    background-color: #f8f9fa;
+    color: #3366cc;
+    border: 1px solid #3366cc;
+}
+
+.hint-btn:hover {
+    background-color: #eaf3ff;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.popup h3 {
+    margin-top: 0;
+    color: #3366cc;
+}
+
+.popup p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+}
+
+.popup-btn {
+    background-color: #3366cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.popup-btn:hover {
+    background-color: #254cc7;
+}
+
+.loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    color: #72777d;
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3366cc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .game-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .wiki-sidebar {
+        display: none;
+    }
+    
+    .game-stats {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .mobile-nav {
+        display: flex;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #eaecf0;
+    }
+    
+    .mobile-nav button {
+        flex: 1;
+        margin: 0 5px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none;
+    }
+}
+
+.mw-page-title-main {
+    display: contents;
 }

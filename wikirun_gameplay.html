@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wr.css">
+    <script src="gameplay.js" defer></script>
+    <title>Wiki Speedrun Game - Playing</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .gameplay-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 50px); /* Adjust based on your navbar height */
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3366cc, #254cc7);
+            color: white;
+            z-index: 10;
+        }
+        
+        .level-info h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .level-info p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .game-stats {
+            display: flex;
+            gap: 25px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .game-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .wiki-sidebar {
+            width: 250px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-right: 1px solid #eaecf0;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        
+        .wiki-sidebar h3 {
+            margin-top: 0;
+            font-size: 1rem;
+            color: #54595d;
+            border-bottom: 1px solid #eaecf0;
+            padding-bottom: 8px;
+        }
+        
+        .wiki-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .wiki-sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .wiki-sidebar a {
+            color: #3366cc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 8px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        
+        .wiki-sidebar a:hover {
+            background-color: #eaecf0;
+        }
+        
+        .wiki-sidebar a.current {
+            font-weight: bold;
+            background-color: #eaecf0;
+        }
+        
+        .wiki-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px 30px;
+            background-color: white;
+        }
+        
+        .wiki-content h1 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: #000;
+            border-bottom: 1px solid #eaecf0;
+            padding-bottom: 10px;
+        }
+        
+        .wiki-content p {
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .wiki-content img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eaecf0;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .wiki-content a {
+            color: #3366cc;
+            text-decoration: none;
+        }
+        
+        .wiki-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .game-controls {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eaecf0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .game-progress {
+            height: 6px;
+            background-color: #eaecf0;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #3366cc, #72a7ff);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        #giveUpBtn {
+            background-color: #f8f9fa;
+            color: #d33;
+            border: 1px solid #d33;
+        }
+        
+        #giveUpBtn:hover {
+            background-color: #fee7e6;
+        }
+        
+        .hint-btn {
+            background-color: #f8f9fa;
+            color: #3366cc;
+            border: 1px solid #3366cc;
+        }
+        
+        .hint-btn:hover {
+            background-color: #eaf3ff;
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .popup h3 {
+            margin-top: 0;
+            color: #3366cc;
+        }
+        
+        .popup p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            backdrop-filter: blur(2px);
+        }
+        
+        .popup-btn {
+            background-color: #3366cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .popup-btn:hover {
+            background-color: #254cc7;
+        }
+        
+        .loading-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-direction: column;
+            color: #72777d;
+        }
+        
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3366cc;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .game-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .wiki-sidebar {
+                display: none;
+            }
+            
+            .game-stats {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .mobile-nav {
+                display: flex;
+                padding: 10px;
+                background-color: #f8f9fa;
+                border-bottom: 1px solid #eaecf0;
+            }
+            
+            .mobile-nav button {
+                flex: 1;
+                margin: 0 5px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-nav {
+                display: none;
+            }
+        }
+
+        .mw-page-title-main {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="k-navbar">
+        <ul class="k-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="wikirun_rules.html">Rules</a></li>
+            <li><a href="wikirun_about.html">About</a></li>
+            <li><a href="wikirun_levels.html">Level Select</a></li>
+        </ul>
+    </nav>
+    
+    <div class="gameplay-container">
+        <div class="game-header">
+            <div class="level-info">
+                <h2 id="levelName">Loading level...</h2>
+                <p>Start: <span id="startPage">Loading...</span> → End: <span id="endPage">Loading...</span></p>
+            </div>
+            <div class="game-stats">
+                <div class="stat-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>
+                    <span>Time: <span id="timer" class="stat-value">0</span>s</span>
+                </div>
+                <div class="stat-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 3 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                    </svg>
+                    <span>Clicks: <span id="clickCounter" class="stat-value">0</span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        
+        <div class="mobile-nav">
+            <button id="mobileBackBtn">← Back</button>
+            <button id="mobileRestartBtn">↺ Restart</button>
+            <button id="mobileHistoryBtn">History</button>
+        </div>
+        
+        <div class="game-content">
+            <div class="wiki-sidebar" id="wikiSidebar">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#" id="historyBackBtn">← Back</a></li>
+                    <li><a href="#" id="restartBtn">↺ Restart Level</a></li>
+                </ul>
+                <h3>Page History</h3>
+                <ul id="pageHistory">
+                    <!-- Page history will be populated here -->
+                </ul>
+            </div>
+            
+            <div id="wikiContent" class="wiki-content">
+                <div class="loading-indicator">
+                    <div class="loading-spinner"></div>
+                    <p>Loading Wikipedia content...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <button class="hint-btn" id="hintBtn">Get a Hint</button>
+            <button id="giveUpBtn">Give Up</button>
+        </div>
+    </div>
+    
+    <div id="popupOverlay" class="popup-overlay"></div>
+    
+    <div id="searchPopup" class="popup">
+        <h3>Nice try!</h3>
+        <p>Using Ctrl+F is not allowed in WikiRun.</p>
+        <button id="closePopupBtn" class="popup-btn">Fin!, I'll play fair</button>
+    </div>
+    
+    <div id="hintPopup" class

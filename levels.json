@@ -1,0 +1,12 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "name": "Test Run 1",
+      "startPage": "New_Orleans",
+      "endPage": "Pro_Football_Hall_of_Fame",
+      "description": "here be the description",
+      "hints": ["hint1?", "hint2?"]
+    }
+  ]
+}

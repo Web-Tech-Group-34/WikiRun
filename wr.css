@@ -28,8 +28,7 @@ body {
   }
   
   .nav-links li a:hover {
-    background-color: #3a7bd5; /* Darker blue on hover */
-    color: white;
+    text-decoration: underline;
   }
 
 

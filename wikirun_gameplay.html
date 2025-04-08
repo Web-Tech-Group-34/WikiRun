@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wr.css">
+    <script src="gameplay.js" defer></script>
+    <title>Wiki Speedrun Game - Playing</title>
+</head>
+
+<body>
+    <nav class="k-navbar">
+        <ul class="k-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="wikirun_rules.html">Rules</a></li>
+            <li><a href="wikirun_about.html">About</a></li>
+            <li><a href="wikirun_levels.html">Level Select</a></li>
+        </ul>
+    </nav>
+    
+    <div class="gameplay-container">
+        <div class="game-header">
+            <div class="level-info">
+                <h2 id="levelName">Loading level...</h2>
+                <p>Start: <span id="startPage">Loading...</span> → End: <span id="endPage">Loading...</span></p>
+            </div>
+            <div class="game-stats">
+                <div class="stat-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>
+                    <span>Time: <span id="timer" class="stat-value">0</span>s</span>
+                </div>
+                <div class="stat-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 3 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                    </svg>
+                    <span>Clicks: <span id="clickCounter" class="stat-value">0</span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        
+        <div class="mobile-nav">
+            <button id="mobileBackBtn">← Back</button>
+            <button id="mobileRestartBtn">↺ Restart</button>
+            <button id="mobileHistoryBtn">History</button>
+        </div>
+        
+        <div class="game-content">
+            <div class="wiki-sidebar" id="wikiSidebar">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#" id="historyBackBtn">← Back</a></li>
+                    <li><a href="#" id="restartBtn">↺ Restart Level</a></li>
+                </ul>
+                <h3>Page History</h3>
+                <ul id="pageHistory">
+                    <!-- Page history will be populated here -->
+                </ul>
+            </div>
+            
+            <div id="wikiContent" class="wiki-content">
+                <div class="loading-indicator">
+                    <div class="loading-spinner"></div>
+                    <p>Loading Wikipedia content...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <button class="hint-btn" id="hintBtn">Get a Hint</button>
+            <button id="giveUpBtn">Give Up</button>
+        </div>
+    </div>
+    
+    <div id="popupOverlay" class="popup-overlay"></div>
+    
+    <div id="searchPopup" class="popup">
+        <h3>Nice try!</h3>
+        <p>Using Ctrl+F is not allowed in WikiRun.</p>
+        <button id="closePopupBtn" class="popup-btn">Fine!, I'll play fair</button>
+    </div>
+    
+    <div id="hintPopup" class

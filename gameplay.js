@@ -147,27 +147,28 @@ document.addEventListener("DOMContentLoaded", function() {
                     updatePageHistory();
                 }
                 
-                // Create a temporary div to hold the content
-                const tempDiv = document.createElement('div');
+                // Create a document fragment to hold the content
+                const fragment = document.createDocumentFragment();
                 
                 // Add the page title
                 const titleElement = document.createElement('h1');
                 titleElement.textContent = (data.parse.displaytitle || pageName.replace(/_/g, " ")).replace(/<span class="mw-page-title-main">(.*?)<\/span>/g, '$1');
-                tempDiv.appendChild(titleElement);                
+                fragment.appendChild(titleElement);
+                
                 // Add the content
                 const contentDiv = document.createElement('div');
                 contentDiv.innerHTML = data.parse.text;
-                tempDiv.appendChild(contentDiv);
+                fragment.appendChild(contentDiv);
                 
                 // Remove unwanted elements
-                removeUnwantedElements(tempDiv);
+                removeUnwantedElements(fragment);
                 
                 // Process links to make them work within our game
-                processLinks(tempDiv, pageName);
+                processLinks(fragment, pageName);
                 
                 // Set the content
                 wikiContentElement.innerHTML = '';
-                wikiContentElement.appendChild(tempDiv);
+                wikiContentElement.appendChild(fragment);
                 
                 // Update progress bar
                 updateProgressBar();
@@ -360,6 +361,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (pageHistory.length > 6) {
             progressBar.style.width = '70%';
         }
+        
+        // Add animation to the progress bar
+        progressBar.style.transition = 'width 0.5s ease-in-out';
     }
     
     // Function to check if the user has reached the target page

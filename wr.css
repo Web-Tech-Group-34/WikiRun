@@ -8,7 +8,7 @@ body {
   }
 
   /* Nav Bar - Done by Cullen */
-  
+
   /* Blue top nav bar */
   .navbar {
     background-color: #4a90e2; /* Soft blue */
@@ -32,6 +32,28 @@ body {
   }
   
   .nav-links li a:hover {
+    text-decoration: underline;
+  }
+
+  /* Footer - Done by Cullen */
+  .footer {
+    background-color: #4a90e2; /* Soft blue */
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.2 ease-in-out;
+  }
+
+  .footer a:hover {
+    color: #003366; /* Darker blue */
     text-decoration: underline;
   }
 

@@ -11,9 +11,15 @@
 
 <body>
 
-<script>
-  $("#result").load("ajax/navbar.html");
-</script>
+  <script>
+    window.onload = function() {
+      jQuery("#result").load("navbar.html", function(response, status, xhr) {
+        if (status == "error") {
+          jQuery("#result").html("Error loading navbar: " + xhr.status + " " + xhr.statusText);
+        }
+      });
+    };
+  </script>
 
 
 <div id="result"></div>

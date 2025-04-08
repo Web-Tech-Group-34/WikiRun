@@ -1,42 +1,37 @@
-body, html {
+body {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-}
-
-.k-navbar {
-    background-color: #007bff;
-    overflow: hidden;
-}
-
-.k-nav-links {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Use Flexbox */
-    justify-content: left; /* Align items to the left */
-    align-items: center; /* Center items vertically */
-}
-
-.k-nav-links li {
-    float: left;
-}
-
-.k-nav-links li a {
-    display: block;
-    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
     text-align: center;
-    padding: 14px 20px;
+  }
+  /* Nav Bar Done by Cullen */
+  /* Blue top nav bar */
+  .navbar {
+    background-color: #4a90e2; /* Soft blue */
+    padding: 1rem 0;
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .nav-links li a {
     text-decoration: none;
-    transition: background-color 0.2s;
-}
-
-.k-nav-links li a:hover {
-    background-color: #0056b3;
     color: white;
-}
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .nav-links li a:hover {
+    background-color: #3a7bd5; /* Darker blue on hover */
+    color: white;
+  }
+
 
 .copyright-container {
     display: flex;

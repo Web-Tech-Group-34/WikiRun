@@ -40,7 +40,7 @@ body {
     font-size: 4rem;
     font-weight: bold;
     color: #1a1a1a;
-    animation: slideFadeIn 1s ease-in, ease-out;
+    animation: slideFadeIn 1s ease-in;
   }
   
   /* Buttons */

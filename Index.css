@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; /* if Segoe UI is not available, fallback to Tahoma, Verdana, or sans-serif */
     background-color: #f5f7fa;
     text-align: center;
   }

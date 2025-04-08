@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="wr.css" />
   <title>Wiki Speedrun - Home</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -13,17 +13,18 @@
 
   <!--the navbar is loaded using jQuery -->
   <script>
-    window.onload = function() {
-      jQuery("#result1").load("navbar.html", function(response, status, xhr) {
-        if (status == "error") {
-          jQuery("#result1").html("Error loading navbar: " + xhr.status + " " + xhr.statusText);
+    $(function () {
+      $("#result1").load("navbar.html", function (response, status, xhr) {
+        if (status === "error") {
+          $("#result1").html("Error loading navbar: " + xhr.status + " " + xhr.statusText);
+          console.error("Navbar load failed:", xhr.status, xhr.statusText);
         }
       });
-    };
+    });
   </script>
 
 
-<div id="result1"></div>
+  <div id="result1"></div>
 
 
   <div class="title-container">
@@ -32,7 +33,6 @@
 
   <div class="button-container">
     <button onclick="window.location.href='levels.html'">Start Game</button>
-    <button onclick="window.location.href='levels.html'">Level Select</button>
   </div>
 
   <!-- the footer is loadeed using jQuery-->

@@ -11,6 +11,7 @@
 
 <body>
 
+  <!--the navbar is loaded using jQuery -->
   <script>
     window.onload = function() {
       jQuery("#result1").load("navbar.html", function(response, status, xhr) {
@@ -34,6 +35,7 @@
     <button onclick="window.location.href='levels.html'">Level Select</button>
   </div>
 
+  <!-- the footer is loadeed using jQuery-->
   <script>
     window.onload = function() {
       jQuery("#result2").load("footer.html", function(response, status, xhr) {
@@ -43,6 +45,8 @@
       });
     };
   </script>
+
+  <div id="result2"></div>
 
 </body>
 </html>

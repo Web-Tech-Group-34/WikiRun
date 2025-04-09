@@ -72,7 +72,7 @@ body {
   }
  /* Buttons */
  .button-container {
-    margin-top: 2rem;
+    margin-top: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,13 +80,14 @@ body {
   }
   
   button {
-    padding: 10 11;
-    font-size: 5;
-    font-weight: bold;
+    width: 300px;
+    height: 100px;
+    font-size: 2.5rem !important;     /* Important to override any other styles */
+    font-weight: bold !important;   /* Important to override any other styles */
     background-color: #4a90e2;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.2s ease;
     animation: pulse 2s infinite;

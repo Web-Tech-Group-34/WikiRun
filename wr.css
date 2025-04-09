@@ -64,11 +64,10 @@ body {
     margin-top: 3rem;
   }
   
-  .animated-title {
+  .title {
     font-size: 4rem;
     font-weight: bold;
     color: #1a1a1a;
-    animation: slideFadeIn 1s ease-in;
   }
  /* Buttons */
  .button-container {
@@ -87,7 +86,7 @@ body {
     background-color: #4a90e2;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 999px !important; /* Fully rounded button */
     cursor: pointer;
     transition: background-color 0.2s ease;
     animation: pulse 2s infinite;
@@ -98,17 +97,6 @@ body {
   }
   
   /* Animation */
-  @keyframes slideFadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   @keyframes pulse {
     0% {
       transform: scale(1);
@@ -122,6 +110,24 @@ body {
       transform: scale(1);
       box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
     }
+  }
+
+  /* Subtitle styling */
+  .subtitle {
+    margin-top: 1rem;
+    text-align:center;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .subtitle2 {
+    margin-top: 1rem;
+    text-align:center;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+    
   }
 
 /* Game Styling */

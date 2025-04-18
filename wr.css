@@ -1,3 +1,18 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
 
 /* Applies to everything unless overwritten below */
 body {
@@ -40,8 +55,6 @@ body {
     background-color: #4a90e2; /* Soft blue */
     color: white;
     padding: 1rem 0;
-    position: static;
-    bottom: 0;
     width: 100%;
     text-align: center;
   }
@@ -96,6 +109,41 @@ body {
     background-color: #357ABD;
   }
   
+  .quick-start-box {
+    background-color: #f0f0f0; /* very light grey */
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 3rem auto;
+    width: fit-content;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .level-select {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .level-btn {
+    display: inline-block;
+    background-color: #4a90e2;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 999px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    animation: pulse 2s infinite;
+  }
+  
+  .level-btn:hover {
+    background-color: #357ABD;
+  }
+
   /* Animation */
   @keyframes pulse {
     0% {

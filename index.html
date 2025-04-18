@@ -10,57 +10,52 @@
 </head>
 
 <body>
+  <div id="result1"></div> <!-- Navbar -->
 
-  <!--the navbar is loaded using jQuery -->
+  <!-- Main content that fills available height -->
+  <div class="main-content">
+    <div class="title-container">
+      <h1 class="title">Wiki Speedrun Game</h1>
+    </div>
+
+    <div class="subtitle">
+      Navigate from one Wikipedia page to another as fast as possible!<br>
+      <span class="subtitle2">Can you beat the clock?</span>
+    </div>
+
+    <div class="button-container">
+      <button onclick="window.location.href='levels.html'">Start Game</button>
+    </div>
+
+    <div class="quick-start-box">
+      <h2>Quick Start:</h2>
+      <div class="level-select">
+        <a href="level1.html" class="level-btn">Level 1</a>
+        <a href="level2.html" class="level-btn">Level 2</a>
+        <a href="level3.html" class="level-btn">Level 3</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer will be loaded here -->
+  <div id="footer-placeholder"></div>
+
+  <!-- jQuery loading for footer -->
   <script>
+    $(document).ready(function () {
+      $("#footer-placeholder").load("footer.html .footer", function () {
+        // After footer is loaded, force layout recalculation if needed
+        document.body.style.display = "flex"; // Re-trigger flexbox
+      });
+    });
+
+    // Navbar loader
     $(function () {
       $("#result1").load("navbar.html", function (response, status, xhr) {
         if (status === "error") {
           $("#result1").html("Error loading navbar: " + xhr.status + " " + xhr.statusText);
-          console.error("Navbar load failed:", xhr.status, xhr.statusText);
         }
       });
     });
   </script>
-
-
-  <div id="result1"></div>
-
-
-  <div class="title-container">
-    <h1 class="title">Wiki Speedrun Game</h1>
-  </div>
-
-  <div class="subtitle">
-    Navigate from one Wikipedia page to another as fast as possible!<br>
-    <span class="subtitle2">Can you beat the clock?</span>
-  </div>
-
-  <div class="button-container">
-    <button onclick="window.location.href='levels.html'">Start Game</button>
-  </div>
-
-  <div class="quick-start">
-    <h2> Quick Start:</h2>
-    <div class="level-Select">
-      <button onclick="window.location.href='level1.html'">Level 1</button>
-      <button onclick="window.location.href='level2.html'">Level 2</button>
-      <button onclick="window.location.href='level3.html'">Level 3</button>
-    </div>
-  </div>
-
-  <!-- the footer is loadeed using jQuery-->
-  <script>
-    window.onload = function() {
-      jQuery("#result2").load("footer.html", function(response, status, xhr) {
-        if (status == "error") {
-          jQuery("#result2").html("Error loading footer: " + xhr.status + " " + xhr.statusText);
-        }
-      });
-    };
-  </script>
-
-  <div id="result2"></div>
-
 </body>
-</html>

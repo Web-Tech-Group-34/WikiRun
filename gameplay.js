@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // Add page to history if it's not already the current page
                 if (pageHistory.length === 0 || pageHistory[pageHistory.length - 1] !== pageName) {
-                    pageHistory.push(pageName);
+                    pageHistory.push(decodeURIComponent(pageName));
                     updatePageHistory();
                 }
                 
@@ -152,14 +152,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // Add the page title
                 const titleElement = document.createElement('h1');
-                titleElement.textContent = (data.parse.displaytitle || pageName.replace(/_/g, " ")).replace(/<span class="mw-page-title-main">(.*?)<\/span>/g, '$1');
+                titleElement.textContent = (data.parse.displaytitle || decodeURIComponent(pageName).replace(/_/g, " ")).replace(/<span class="mw-page-title-main">(.*?)<\/span>/g, '$1');
                 fragment.appendChild(titleElement);
                 
                 // Add the content
                 const contentDiv = document.createElement('div');
                 contentDiv.innerHTML = data.parse.text;
-                fragment.appendChild(contentDiv);
-                
+                fragment.appendChild(contentDiv);                
                 // Remove unwanted elements
                 removeUnwantedElements(fragment);
                 

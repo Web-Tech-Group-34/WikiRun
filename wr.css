@@ -1,81 +1,184 @@
-body, html {
-    margin: 0;
-    padding: 0;
+html, body {
     height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-}
-
-.k-navbar {
-    background-color: #007bff;
-    overflow: hidden;
-}
-
-.k-nav-links {
-    list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex; /* Use Flexbox */
-    justify-content: left; /* Align items to the left */
-    align-items: center; /* Center items vertically */
-}
-
-.k-nav-links li {
-    float: left;
-}
-
-.k-nav-links li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    transition: background-color 0.2s;
-}
-
-.k-nav-links li a:hover {
-    background-color: #0056b3;
-    color: white;
-}
-
-.copyright-container {
+  }
+  
+  body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin-top: 70px;
-}
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
 
-.wikirun_index {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+/* Applies to everything unless overwritten below */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    background-color: #f5f7fa;
     text-align: center;
-}
+  }
 
-.quick-start {
-    margin: 30px 0;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-}
+  /* Nav Bar - Done by Cullen */
 
-.start-button {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 24px;
-    background-color: #4285f4;
+  /* Blue top nav bar */
+  .navbar {
+    background-color: #4a90e2; /* Soft blue */
+    padding: 1rem 0;
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .nav-links li a:hover {
+    text-decoration: underline;
+  }
+
+  /* Footer - Done by Cullen */
+  .footer {
+    background-color: #4a90e2; /* Soft blue */
+    color: white;
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer a {
     color: white;
     text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
+    transition: all 0.2 ease-in-out;
+  }
 
-.start-button:hover {
-    background-color: #3367d6;
-}
+  .footer a:hover {
+    color: #003366; /* Darker blue */
+    text-decoration: underline;
+  }
+
+/* Index Styling */
+
+  /* Title styling */
+  .title-container {
+    margin-top: 3rem;
+  }
+  
+  .title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+ /* Buttons */
+ .button-container {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  button {
+    width: 300px;
+    height: 100px;
+    font-size: 2.5rem !important;     /* Important to override any other styles */
+    font-weight: bold !important;   /* Important to override any other styles */
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 999px !important; /* Fully rounded button */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    animation: pulse 2s infinite;
+  }
+  
+  button:hover {
+    background-color: #357ABD;
+  }
+  
+  .quick-start-box {
+    background-color: #f0f0f0; /* very light grey */
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 3rem auto;
+    width: fit-content;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .level-select {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .level-btn {
+    display: inline-block;
+    background-color: #4a90e2;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 999px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    animation: pulse 2s infinite;
+  }
+  
+  .level-btn:hover {
+    background-color: #357ABD;
+  }
+
+  /* Animation */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 10px rgba(74, 144, 226, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+    }
+  }
+
+  /* Subtitle styling */
+  .subtitle {
+    margin-top: 1rem;
+    text-align:center;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .subtitle2 {
+    margin-top: 1rem;
+    text-align:center;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+    
+  }
+
+/* Game Styling */
 
 .gameplay-container {
     display: flex;
@@ -135,6 +238,8 @@ body, html {
     position: relative;
 }
 
+/* Wiki Sidebar */
+
 .wiki-sidebar {
     width: 250px;
     background-color: #f8f9fa;
@@ -181,6 +286,8 @@ body, html {
     background-color: #eaecf0;
 }
 
+/* Wiki Content */
+
 .wiki-content {
     flex-grow: 1;
     overflow-y: auto;
@@ -218,6 +325,8 @@ body, html {
     text-decoration: underline;
 }
 
+/* Game Controls */
+
 .game-controls {
     padding: 10px 20px;
     background-color: #f8f9fa;
@@ -243,6 +352,8 @@ body, html {
     width: 0%;
     transition: width 0.5s ease;
 }
+
+/* Game Controls Buttons */
 
 button {
     padding: 8px 16px;
@@ -273,6 +384,8 @@ button {
 .hint-btn:hover {
     background-color: #eaf3ff;
 }
+
+/* Popup Styling */
 
 .popup {
     display: none;
@@ -326,6 +439,8 @@ button {
     background-color: #254cc7;
 }
 
+/* Loading Indicator */
+
 .loading-indicator {
     display: flex;
     justify-content: center;
@@ -349,6 +464,9 @@ button {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* Responsive Design */
+/* Adjustments for smaller screens */
 
 @media (max-width: 768px) {
     .game-header {

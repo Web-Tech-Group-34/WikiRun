@@ -1,61 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="wr.css" />
-  <title>Wiki Speedrun - Home</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="wr.css">
+        <title>Wiki Speedrun Game</title>
 </head>
 
 <body>
-  <div id="result1"></div> <!-- Navbar -->
 
-  <!-- Main content that fills available height -->
-  <div class="main-content">
-    <div class="title-container">
-      <h1 class="title">Wiki Speedrun Game</h1>
-    </div>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rules.html">Rules</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
 
-    <div class="subtitle">
-      Navigate from one Wikipedia page to another as fast as possible!<br>
-      <span class="subtitle2">Can you beat the clock?</span>
-    </div>
+  <header class="title-container">
+    <h1 class="animated-title">Wiki Speedrun Game</h1>
+  </header>
 
-    <div class="button-container">
-      <button onclick="window.location.href='levels.html'">Start Game</button>
-    </div>
-
-    <div class="quick-start-box">
-      <h2>Quick Start:</h2>
-      <div class="level-select">
-        <a href="level1.html" class="level-btn">Level 1</a>
-        <a href="level2.html" class="level-btn">Level 2</a>
-        <a href="level3.html" class="level-btn">Level 3</a>
-      </div>
-    </div>
+  <div class="button-container">
+    <button onclick="window.location.href='levels.html'">Start Game</button>
+    <button onclick="window.location.href='levels.html'">Level Select</button>
   </div>
 
-  <!-- Footer will be loaded here -->
-  <div id="footer-placeholder"></div>
-
-  <!-- jQuery loading for footer -->
-  <script>
-    $(document).ready(function () {
-      $("#footer-placeholder").load("footer.html .footer", function () {
-        // After footer is loaded, force layout recalculation if needed
-        document.body.style.display = "flex"; // Re-trigger flexbox
-      });
-    });
-
-    // Navbar loader
-    $(function () {
-      $("#result1").load("navbar.html", function (response, status, xhr) {
-        if (status === "error") {
-          $("#result1").html("Error loading navbar: " + xhr.status + " " + xhr.statusText);
-        }
-      });
-    });
-  </script>
 </body>
+</html

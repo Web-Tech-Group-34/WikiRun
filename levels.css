@@ -61,12 +61,3 @@ a.level:hover {
     background-color: #0056b3;
 }
 
-.background-photo {
-    height: 40px;  Full viewport height 
-    width: 40px;
-    background-image: url("images/levels_star.png"); 
-}
-
-p{
-    font-size 10;
-}

@@ -46,17 +46,27 @@ body {
 
 a.level {
     display: block;
-    padding: 15px 30px;
-    margin: 10px;
-    font-size: 20px;
+    padding: 10px 15px;
+    margin: 35px;
+    font-size: 30px;
     color: white;
-    background-color: #007BFF;
-    text-align: center;
+    background-color: #4a90e2;
+    text-align: left;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 20px;
     transition: background-color 0.3s ease;
 }
 
 a.level:hover {
     background-color: #0056b3;
+}
+
+.background-photo {
+    height: 40px;  Full viewport height 
+    width: 40px;
+    background-image: url("images/levels_star.png"); 
+}
+
+p{
+    font-size 10;
 }

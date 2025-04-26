@@ -115,6 +115,18 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (scoreElement) {
 			scoreElement.textContent = finalScore;
 		}
+		
+		//set max score for star fill
+		let maxPossibleScore = 235;
+
+		if (difficulty ===2) {
+			maxPossibleScore = 345;
+		} else if (difficulty ===3) {
+			maxPossibleScore = 400;
+		}
+
+		//get percentage for star fill
+		const fillPercentage = Math.min((finalScore / maxPossibleScore) * 100, 100);
 	}
 
 	

@@ -507,3 +507,27 @@ button {
 .mw-page-title-main {
     display: contents;
 }
+
+/* Kirstens Styling for results page */
+
+.star-rating {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem; /* Size of the stars */
+  line-height: 1;
+}
+
+.star-background {
+  color: black; /* Black stars underneath */
+}
+
+.star-foreground {
+  color: gold; /* Gold stars filling up */
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0; /* Start empty, we will fill this with JS */
+  white-space: nowrap;
+  transition: width 1s ease-in-out; /* Smooth animation */
+}

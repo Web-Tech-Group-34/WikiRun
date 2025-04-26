@@ -11,6 +11,59 @@
       "optimalPaths": [
         ["Edinburgh Napier University", "Scottish Gaelic"]
       ]
+    },
+
+    {
+      "id": 2,
+      "name": "easy peasy",
+      "difficulty": 1,
+      "startPage": "Lemon",
+      "endPage": "Lemonade",
+      "description": "lemon squeezy?",
+      "hints": ["This ones easy peasy lemon squeezy"],
+      "optimalPaths": [
+        ["Lemon", "Lemonade"]
+      ]
+    },
+
+    {
+      "id": 3,
+      "name": "NFL",
+      "dificulty": 2,
+      "startPage": "New_Orleans",
+      "endPage": "Pro_Football_Hall_of_Fame",
+      "description": "from the home of mardi gras to the home of the greats",
+      "hints": ["New Orleans has an NFL team"],
+      "optimalPaths": [
+        ["New Orleans", "National Football League", "Pro Football Hall of Fame"],
+        ["New Orleans", "New Orleans Saints", "Pro Football Hall of Fame"]
+      ]
+    },
+
+    {
+      "id": 4,
+      "name": "Gaming?",
+      "difficulty": 2,
+      "startPage": "Royal_Game_of_Ur",
+      "endPage": "Pandemic_(board_game)",
+      "description": "from the first board game to a more modern one",
+      "hints": ["Pandemic is a MODERN COOPERATIVE board game"],
+      "optimalPaths": [
+        ["Royal_Game_of_Ur", "Board_game", "Pandemic_(board_game)"]
+      ]
+    },
+
+    {
+      "id": 5,
+      "name": "Great Boy Bands",
+      "difficulty": 3,
+      "startPage": "The_Beatles",
+      "endPage": "BTS",
+      "description": "from the first boyband to a more modern one",
+      "hints": ["BTS is a K-POP boyband who create POP-ular music"],
+      "optimalPaths": [
+        ["The_Beatles", "Pop_music", "K-pop", "BTS"]
+      ]
     }
   ]
 }

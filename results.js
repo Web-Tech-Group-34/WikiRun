@@ -14,6 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	let endPage = getQueryParam("end"); // || "Pro_Football_Hall_of_Fame";
 	let clicks = getQueryParam("clicks"); //|| 3;
 	let time = getQueryParam("time"); // || 273;
+
+// variables to assist in scoring
+	let difficulty = 1; // default, will be updated after fetching levels.json
+	let optimalClicks = 3; // default, will be updated after fetching levels.json
+
 	
 	//testing console log to check arameters are being picked up
 	console.log("Extracted Parameters:", { startPage, endPage, clicks, time }); 
@@ -41,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
 				//optimal path
 				const optimalPathElement = document.getElementById("optimalPath");
 				optimalPathElement.innerHTML = matchedLevel.optimalPaths[0].join(" -> ");
+
+				//calculate score at this point
+				calculateScore(clicks, time, difficulty, optimalClicks);
+
 			} else {
 				console.log("level not ofound");
 			}
@@ -108,6 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-	calculateScore(clicks, time, difficulty, optimalClicks);
+	
 
 });

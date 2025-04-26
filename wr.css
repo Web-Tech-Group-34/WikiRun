@@ -594,3 +594,9 @@ button {
   margin: 20px 0;
   width: 100%;
 }
+
+.pagewrapper-k {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

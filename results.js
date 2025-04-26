@@ -106,4 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			scoreElement.textContent = finalScore;
 		}
 	}
+
+	calculateScore(clicks, time, difficulty, optimalClicks);
+
 });

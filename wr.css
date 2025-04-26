@@ -549,7 +549,14 @@ button {
   flex-wrap: wrap;
 }
 
-.startpage-k, .endpage-k .stats-k {
+.startpage-k, .endpage-k {
+  flex: 1 1 45%;
+  text-align: center;
+  margin: 10px;
+  min-width: 150px;
+}
+
+.stats-k {
   flex: 1;
   margin: 10px;
   min-width: 150px;
@@ -560,8 +567,9 @@ button {
 }
 
 .scores-k p {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 

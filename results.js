@@ -55,9 +55,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	const userPathElement = document.getElementById("userPath");
 	if (userPath.length > 0 ) {
-		userPathElement.innerHTML = userPath.join (" -> " );
+		// make each page a clickable link
+		const links = userPath.map(page => {
+			const pageName = page.replace(/_/g, " ");
+			const pageUrl = `https://en.wikipedia.org/wiki/${page}`;
+			return `<a href="${pageUrl}" target="_blank">${pageName}</a>`;
+		});
+	
+		// display all links with arrows between them
+		userPathElement.innerHTML = links.join(' -> ');
 	} else {
-		userPathElement.textContent = "No Path Available";
+		userPathElement.textContent = "No path recorded.";
 	}
-
 });

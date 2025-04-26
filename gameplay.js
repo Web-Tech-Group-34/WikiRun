@@ -402,6 +402,9 @@ document.addEventListener("DOMContentLoaded", function() {
         clearInterval(timerInterval);
         hasWon = won;
         
+        // saves user apth to local storage
+        localStorage.setItem(`userPath`, JSON.stringify(pageHistory)); 
+
         // Redirect to results page with game data
         const resultsUrl = `wikirun_results.html?start=${currentLevel.startPage}&end=${currentLevel.endPage}&clicks=${clickCount}&time=${timer}`;
         window.location.href = resultsUrl;

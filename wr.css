@@ -556,6 +556,16 @@ button {
   min-width: 150px;
 }
 
+.label-k {
+  font-weight: bold;
+  display: block;
+}
+
+.value-k {
+  display: block;
+  margin-top: 5px;
+}
+
 .stats-k {
   flex: 1;
   margin: 10px;

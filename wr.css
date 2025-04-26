@@ -529,5 +529,5 @@ button {
   overflow: hidden;
   width: 0; /* starts at zero so cannot be seen */
   white-space: nowrap;
-  transition: width 1s ease-in-out; /* animates out from left to right */
+  transition: width 3s ease-in-out; /* animates out from left to right */
 }

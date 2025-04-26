@@ -5,19 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="wr.css">
         <link rel="stylesheet" href="levels.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <title>Wiki Speedrun Game</title>
 	</head>
 
 	<body>
 
-		<nav class="navbar">
-			<ul class="nav-links">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="rules.html">Rules</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="levels.html">Level Select</a></li>
-			</ul>
-		</nav>
+		<div id="result1"></div> <!-- Navbar -->
 
 		<div class="wikirun_index">
 			<h1> Wiki Speedrun level select: </h1>
@@ -31,11 +25,27 @@
 
 	</body>
 	
-	<div class="copyright-container">
-		<footer>
-			<p>&copy;Rory Griffin</p>
-		</footer>
-	</div>
+	<!-- Footer will be loaded here -->
+	<div id="footer-placeholder"></div>
+
+	<!-- jQuery loading for footer -->
+	<script>
+	  $(document).ready(function () {
+		$("#footer-placeholder").load("footer.html .footer", function () {
+		  // After footer is loaded, force layout recalculation if needed
+		  document.body.style.display = "flex"; // Re-trigger flexbox
+		});
+	  });
+  
+	  // Navbar loader
+	  $(function () {
+		$("#result1").load("navbar.html", function (response, status, xhr) {
+		  if (status === "error") {
+			$("#result1").html("Error loading navbar: " + xhr.status + " " + xhr.statusText);
+		  }
+		});
+	  });
+	</script>
 
 </html>
 

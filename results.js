@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		return urlParams.get(param); //gets parameter for each key
 	}
 	
- // extract values from url
-	let startPage = getQueryParam("start") || "New_Orleans";
-	let endPage = getQueryParam("end") || "Pro_Football_Hall_of_Fame";
-	let clicks = getQueryParam("clicks") || 3;
-	let time = getQueryParam("time") || 273;
+ // extract values from url addtional blank values for testing purposes
+	let startPage = getQueryParam("start"); // || "New_Orleans";
+	let endPage = getQueryParam("end"); // || "Pro_Football_Hall_of_Fame";
+	let clicks = getQueryParam("clicks"); //|| 3;
+	let time = getQueryParam("time"); // || 273;
 	
 	//testing console log to check arameters are being picked up
 	console.log("Extracted Parameters:", { startPage, endPage, clicks, time }); 

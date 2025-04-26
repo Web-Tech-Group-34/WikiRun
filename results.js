@@ -41,7 +41,20 @@ document.addEventListener("DOMContentLoaded", function () {
 			if (matchedLevel) {
 				//checks difficulty levels matches for validation
 				const difficultyJson = document.getElementById("difficulty");
-				difficultyJson.textContent = matchedLevel.difficulty
+
+				// Set text based on difficulty level
+				let difficultyText = "Easy"; // Default
+
+				if (matchedLevel.difficulty === 2) {
+					difficultyText = "Medium";
+				} else if (matchedLevel.difficulty >= 3) {
+					difficultyText = "Hard";
+				}
+
+				difficultyJson.textContent = difficultyText;
+
+				// Still save the numeric difficulty for score calculations
+				difficulty = matchedLevel.difficulty;
 
 				//optimal path
 				const optimalPathElement = document.getElementById("optimalPath");
@@ -50,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				//calculate score at this point
 				calculateScore(clicks, time, difficulty, optimalClicks);
 
-			} else {
+			} else { //error logging/handlinh
 				console.log("level not ofound");
 			}
 		})
@@ -127,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		//get percentage for star fill
 		const fillPercentage = Math.min((finalScore / maxPossibleScore) * 100, 100);
-		
+
 		// testing log
 		console.log("Fill percentage for stars:", fillPercentage);
 

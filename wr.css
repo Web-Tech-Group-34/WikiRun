@@ -535,11 +535,12 @@ button {
 /* flexbox styling so eberything floats on page */
 .results-container {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f4f4f4;
+  margin: 30 auto;
+  padding: 30px;
+  background-color: #f9f9f9;
   border-radius: 15px;
   text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .toprow-k, .middlerow-k {

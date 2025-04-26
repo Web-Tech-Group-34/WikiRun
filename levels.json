@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Test Run 1",
-      "dificulty": 1,
+      "difficulty": 1,
       "startPage": "Edinburgh_Napier_University",
       "endPage": "Scottish_Gaelic",
       "description": "It's all about the language...",

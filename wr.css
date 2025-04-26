@@ -513,21 +513,21 @@ button {
 .star-rating {
   position: relative;
   display: inline-block;
-  font-size: 2rem; /* Size of the stars */
+  font-size: 2rem; /* stars size */
   line-height: 1;
 }
 
 .star-background {
-  color: black; /* Black stars underneath */
+  color: black; /* black on bottom */
 }
 
 .star-foreground {
-  color: gold; /* Gold stars filling up */
+  color: gold; /* gold fill over top */
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
-  width: 0; /* Start empty, we will fill this with JS */
+  width: 0; /* starts at zero so cannot be seen */
   white-space: nowrap;
-  transition: width 1s ease-in-out; /* Smooth animation */
+  transition: width 1s ease-in-out; /* animates out from left to right */
 }

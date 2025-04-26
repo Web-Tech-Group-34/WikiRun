@@ -67,4 +67,46 @@ document.addEventListener("DOMContentLoaded", function () {
 	} else {
 		userPathElement.textContent = "No path recorded.";
 	}
+
+// calculate a user score
+	function calculateScore(clicks, time, difficulty, optimalClicks) {
+
+		const baseScore = 250;
+		console.log("base score ", baseScore);
+
+		//penalties
+		const timePenalty = time * 1;
+
+		const extraClicks = Math.max(0, clicks - optimalClicks);
+
+		const extraClickPenalty = extraClicks * 10;
+		console.log("time penalty ", timePenalty);
+		console.log("clicks penalty ", extraClickPenalty);
+
+		// raw score
+		const rawScore = baseScore - (extraClickPenalty + timePenalty);
+
+		// dificulty multiplier
+		let difficultyMultiplier = 1;
+
+		if (difficulty === 2) {
+			difficultyMultiplier = 1.5;
+		} else if (difficulty === 3) {
+			difficultyMultiplier = 2;
+		}
+		console.log ("difficluty multiplier", difficultyMultiplier);
+
+		//final score
+		let finalScore = Math.max(0, Math.round(rawScore * difficultyMultiplier));
+
+		console.log("total", finalScore);
+
+		const scoreElement = document.getElementById("finalScore");
+		if (scoreElement) {
+			scoreElement.textContent = finalScore;
+		}
+	}
+
+	calculateScore(clicks, time, difficulty, optimalClicks);
+
 });

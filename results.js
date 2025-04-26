@@ -70,7 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // calculate a user score
 	function calculateScore(clicks, time, difficulty, optimalClicks) {
-
+		//testing to see if function is being called properly
+		console.log("CALCULATE SCORE CALLED!", { clicks, time, difficulty, optimalClicks });
 		const baseScore = 250;
 		console.log("base score ", baseScore);
 

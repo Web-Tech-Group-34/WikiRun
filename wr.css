@@ -529,5 +529,42 @@ button {
   overflow: hidden;
   width: 0; /* starts at zero so cannot be seen */
   white-space: nowrap;
-  transition: width 3s ease-in-out; /* animates out from left to right */
+  transition: width 5s ease-in-out; /* animates out from left to right */
+}
+
+/* flexbox styling so eberything floats on page */
+.results-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.toprow-k, .middlerow-k {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.startpage-k, .endpage-k .stats-k {
+  flex: 1;
+  margin: 10px;
+  min-width: 150px;
+}
+
+.scores-k {
+  margin: 30px 0;
+}
+
+.scores-k p {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+
+.path-k {
+  margin-top: 30px;
 }

@@ -20,19 +20,37 @@
 	
 		<div class="results-container">
 			<h1> Results </h1>
-			<p><strong>Start Page:</strong> <span id="startPage"></span></p>
-			<p><strong>End Page:</strong> <span id="endPage"></span></p>
-			<p><strong>Clicks Used:</strong> <span id="clicks"></span></p>
-			<p><strong>Time Taken:</strong> <span id="time"></span> seconds</p>
-			<p><strong>Difficulty:</strong> <span id="difficulty"></span></p>
-			<p><strong>Your Final Score:</strong> <span id="finalScore">Loading...</span></p>
+
+			<!--top row-->
+			<div class="toprow-k">
+				<div class="startpage-k"><strong>Start Page:</strong> <span id="startPage"></span></div>
+				<div class="endpage-k"><strong>End Page:</strong> <span id="endPage"></span></div>
+			</div>
+
+			<!--middle row-->
+			<div class="middlerow-k">
+				<div class="stats-k"><strong>Clicks Used:</strong> <span id="clicks"></span></div>
+				<div class="stats-k"><strong>Time Taken:</strong> <span id="time"></span> seconds</div>
+				<div class="stats-k"><strong>Difficulty:</strong> <span id="difficulty"></span></div>
+			</div>
+
+			<!--final score centred-->
+			<div class="scores-k">
+				<p><strong>Your Final Score:</strong> <span id="finalScore">Loading...</span></p>
+
 			<!--star graphic to visual siplay score rating-->
 			<div class="star-rating">
 				<div class="star-background">★★★★★</div>
 				<div class="star-foreground" id="starFill">★★★★★</div>
 			  </div>
+			</div>
+
+			<!--bottom section-->
+			<div class="paths-k">
 			<p><strong>Optimal Path:</strong> <span id="optimalPath"></span></p>
 			<p><strong>Your Path:</strong> <span id="userPath"></span></p>
+			</div>
+
 			<button onclick="window.location.href='wikirun_levels.html'">Play Again</button>
 		</div>
         

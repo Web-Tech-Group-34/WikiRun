@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
 				//optimal path
 				const optimalPathElement = document.getElementById("optimalPath");
 				optimalPathElement.innerHTML = matchedLevel.optimalPaths[0].join(" -> ");
+
+				//calculate score at this point
+				calculateScore(clicks, time, difficulty, optimalClicks);
+
 			} else {
 				console.log("level not ofound");
 			}
@@ -113,6 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-	calculateScore(clicks, time, difficulty, optimalClicks);
+	
 
 });

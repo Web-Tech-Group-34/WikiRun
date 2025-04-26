@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		return urlParams.get(param); //gets parameter for each key
 	}
 	
- // extract values from url
-	let startPage = getQueryParam("start") || "New_Orleans";
-	let endPage = getQueryParam("end") || "Pro_Football_Hall_of_Fame";
-	let clicks = getQueryParam("clicks") || 3;
-	let time = getQueryParam("time") || 273;
+ // extract values from url addtional blank values for testing purposes
+	let startPage = getQueryParam("start"); // || "New_Orleans";
+	let endPage = getQueryParam("end"); // || "Pro_Football_Hall_of_Fame";
+	let clicks = getQueryParam("clicks"); //|| 3;
+	let time = getQueryParam("time"); // || 273;
 	
 	//testing console log to check arameters are being picked up
 	console.log("Extracted Parameters:", { startPage, endPage, clicks, time }); 
@@ -24,4 +24,47 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("clicks").textContent = clicks;
 	document.getElementById("time").textContent = time;
 
+// fetch level data from levels.json
+	fetch(`levels.json`)
+		.then(response => response.json())
+		.then(data => {
+			const levels = data.levels;
+			const matchedLevel = levels.find(level =>
+				level.startPage === startPage && level.endPage === endPage
+			);
+
+			if (matchedLevel) {
+				//checks difficulty levels matches for validation
+				const difficultyJson = document.getElementById("difficulty");
+				difficultyJson.textContent = matchedLevel.difficulty
+
+				//optimal path
+				const optimalPathElement = document.getElementById("optimalPath");
+				optimalPathElement.innerHTML = matchedLevel.optimalPaths[0].join(" -> ");
+			} else {
+				console.log("level not ofound");
+			}
+		})
+		.catch(error => {
+			console.error("error loading JSON level", error);
+		}
+		);
+
+// get users actual path from local storage
+	const userPath = JSON.parse(localStorage.getItem(`userPath`)) || [];
+
+	const userPathElement = document.getElementById("userPath");
+	if (userPath.length > 0 ) {
+		// make each page a clickable link
+		const links = userPath.map(page => {
+			const pageName = page.replace(/_/g, " ");
+			const pageUrl = `https://en.wikipedia.org/wiki/${page}`;
+			return `<a href="${pageUrl}" target="_blank">${pageName}</a>`;
+		});
+	
+		// display all links with arrows between them
+		userPathElement.innerHTML = links.join(' -> ');
+	} else {
+		userPathElement.textContent = "No path recorded.";
+	}
 });

@@ -127,6 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		//get percentage for star fill
 		const fillPercentage = Math.min((finalScore / maxPossibleScore) * 100, 100);
+		
+		// testing log
+		console.log("Fill percentage for stars:", fillPercentage);
+
 
 		const starFill = document.getElementById("starFill");
 		if (starFill) {

@@ -137,7 +137,6 @@ body {
     font-weight: bold;
     text-decoration: none;
     transition: background-color 0.2s ease;
-    animation: pulse 2s infinite;
   }
   
   .level-btn:hover {
